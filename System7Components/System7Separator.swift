@@ -1,11 +1,14 @@
 import Foundation
 import SwiftUI
 
-struct System7Divider: View {
+public struct System7Divider: View {
 
     @Environment(\.scaleFactor) var scaleFactor
 
-    var body: some View {
+    public init() {
+    }
+
+    public var body: some View {
         Line()
             .stroke(style: StrokeStyle(lineWidth: 1*scaleFactor, dash: [1*scaleFactor]))
             .system7ScalableFrame(height: 1)
