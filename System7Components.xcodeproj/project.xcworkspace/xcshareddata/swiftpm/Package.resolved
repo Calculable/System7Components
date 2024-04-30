@@ -1,0 +1,15 @@
+{
+  "originHash" : "00398ece5b8c1a1be5b1a79c6b5417558509a282b2721d1d128d58d127516896",
+  "pins" : [
+    {
+      "identity" : "swiftui-flow",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tevelee/SwiftUI-Flow",
+      "state" : {
+        "revision" : "5da6e12bf5e5cb096db7de6af7f02f7f02444cf3",
+        "version" : "1.3.1"
+      }
+    }
+  ],
+  "version" : 3
+}
