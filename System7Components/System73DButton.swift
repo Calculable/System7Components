@@ -1,10 +1,14 @@
 import SwiftUI
 
-struct System73DButtonStyle: ButtonStyle {
-    
-    let isSymbolButton: Bool
-    
-    func makeBody(configuration: Configuration) -> some View {
+public struct System73DButtonStyle: ButtonStyle {
+
+    private let isSymbolButton: Bool
+
+    public init(isSymbolButton: Bool) {
+        self.isSymbolButton = isSymbolButton
+    }
+
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .system7FontLarge()
             .system7ScalablePadding(isSymbolButton ? EdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2) : EdgeInsets(top: 2, leading: 8, bottom: 2, trailing: 8))

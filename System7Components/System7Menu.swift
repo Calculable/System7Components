@@ -1,17 +1,22 @@
 import Foundation
 import SwiftUI
 
-struct System7MenuItemConfiguration: Identifiable {
-    let id = UUID()
-    let titleType: System7MenuTitleType
-    let items: [System7MenuItemType]
+public struct System7MenuItemConfiguration: Identifiable {
+    public let id = UUID()
+    public let titleType: System7MenuTitleType
+    public let items: [System7MenuItemType]
+
+    public init(titleType: System7MenuTitleType, items: [System7MenuItemType]) {
+        self.titleType = titleType
+        self.items = items
+    }
 }
 
-enum System7MenuItemType {
+public enum System7MenuItemType {
     case separator
     case button(buttonItem: System7MenuButtonItem)
     
-    var isSelectable: Bool {
+    public var isSelectable: Bool {
         switch self {
             case .separator:
                 return false
@@ -21,28 +26,33 @@ enum System7MenuItemType {
     }
 }
 
-enum System7MenuTitleType {
+public enum System7MenuTitleType {
     case image(image: ImageResource, width: CGFloat, height: CGFloat)
     case text(title: String)
 }
 
-struct System7MenuButtonItem {
-    let id: UUID
-    let title: String
-    let isSelectable: Bool
+public struct System7MenuButtonItem {
+    public let id: UUID
+    public let title: String
+    public let isSelectable: Bool
 
-    init(id: UUID = UUID(), title: String, isSelectable: Bool) {
+    public init(id: UUID = UUID(), title: String, isSelectable: Bool) {
         self.id = id
         self.title = title
         self.isSelectable = isSelectable
     }
 }
 
-struct System7MenuBar: View {
-    let menus: [System7MenuItemConfiguration]
-    let onItemClicked: (System7MenuButtonItem) -> ()
+public struct System7MenuBar: View {
+    private let menus: [System7MenuItemConfiguration]
+    private let onItemClicked: (System7MenuButtonItem) -> ()
 
-    var body: some View {
+    public init(menus: [System7MenuItemConfiguration], onItemClicked: @escaping (System7MenuButtonItem) -> Void) {
+        self.menus = menus
+        self.onItemClicked = onItemClicked
+    }
+
+    public var body: some View {
         HStack(alignment: .bottom, spacing: 0) {
             ForEach(menus) { menu in
                 System7Menu(configuration: menu, onItemClicked: onItemClicked)
@@ -57,7 +67,6 @@ struct System7MenuBar: View {
         .background(Color(.background))
         .zIndex(500)
     }
-    
 }
 
 private struct System7Menu: View {

@@ -32,21 +32,21 @@ struct System7ImageButtonStyle: ButtonStyle {
     }
 }
 
-struct System7ScaleableImage: View {
+public struct System7ScaleableImage: View {
 
-    let resource: ImageResource
-    let width: CGFloat
-    let height: CGFloat
-    let resizingMode: Image.ResizingMode
+    private let resource: ImageResource
+    private let width: CGFloat
+    private let height: CGFloat
+    private let resizingMode: Image.ResizingMode
 
-    init(resource: ImageResource, width: CGFloat, height: CGFloat, resizingMode: Image.ResizingMode = .stretch) {
+    public init(resource: ImageResource, width: CGFloat, height: CGFloat, resizingMode: Image.ResizingMode = .stretch) {
         self.resource = resource
         self.width = width
         self.height = height
         self.resizingMode = resizingMode
     }
 
-    var body: some View {
+    public var body: some View {
 
         switch resizingMode {
             case .tile:

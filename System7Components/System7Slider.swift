@@ -1,16 +1,21 @@
 import Foundation
 import SwiftUI
 
-struct System7Slider: View {
+public struct System7Slider: View {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
-    @Binding var value: Double
-    let range: ClosedRange<Double>
-    
+    @Binding public var value: Double
+    public let range: ClosedRange<Double>
+
     @State private var previousKnobOffset = 0.0
     @State private var knobOffset = 0.0
-    
+
+    init(value: Binding<Double>, range: ClosedRange<Double>) {
+        self._value = value
+        self.range = range
+    }
+
     private var knobWidth: CGFloat {
         16.0*scaleFactor
     }
@@ -18,7 +23,7 @@ struct System7Slider: View {
         5.0*scaleFactor
     }
 
-    var body: some View {
+    public var body: some View {
         GeometryReader { geo in
             ZStack(alignment: .leading) {
                 Capsule()

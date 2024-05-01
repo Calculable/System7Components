@@ -2,14 +2,15 @@ import Foundation
 import SwiftUI
 
 /// A window frame with a header, border and optional scrollbars
-struct System7Frame<Content: View>: View {
-    
-    let title: String
-    let isFocused: Bool
-    let scrollbarBehavior: System7FrameScrollbarBehavior
-    let onClose: (() -> ())?
+public struct System7Frame<Content: View>: View {
 
-    init(title: String, isFocused: Bool, scrollbarBehavior: System7FrameScrollbarBehavior = .enabled, onClose: (() -> ())? = nil, content: @escaping () -> Content) {
+    private let title: String
+    private let isFocused: Bool
+    private let scrollbarBehavior: System7FrameScrollbarBehavior
+    private let onClose: (() -> ())?
+    @ViewBuilder public let content: () -> Content
+
+    public init(title: String, isFocused: Bool, scrollbarBehavior: System7FrameScrollbarBehavior = .enabled, onClose: (() -> ())? = nil, content: @escaping () -> Content) {
         self.title = title
         self.isFocused = isFocused
         self.scrollbarBehavior = scrollbarBehavior
@@ -17,10 +18,8 @@ struct System7Frame<Content: View>: View {
         self.content = content
     }
 
-    @ViewBuilder let content: () -> Content
-    
-    var body: some View {
-        
+    public var body: some View {
+
         VStack(alignment: .leading, spacing: 0) {
             System7FrameHeader(title: title, isFocused: isFocused, onClose: onClose)
             
@@ -36,7 +35,7 @@ struct System7Frame<Content: View>: View {
     }
 }
 
-enum System7FrameScrollbarBehavior {
+public enum System7FrameScrollbarBehavior {
     /// dont show a scrollbar. Use this if you provide your own ScrollView in the frame
     case none
     
@@ -99,7 +98,7 @@ private struct System7FrameHeader: View {
             }
         }
         .system7ScalablePadding(1)
-        .system7PlainBorder()
+        .system7PlainBorder(color: .foreground)
 
 
     }

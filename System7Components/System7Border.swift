@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct BorderModifier: ViewModifier {
+fileprivate struct BorderModifier: ViewModifier {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     let width: CGFloat
     let edges: [Edge]
@@ -14,9 +14,9 @@ struct BorderModifier: ViewModifier {
     }
 }
 
-struct System73DBorderModifier: ViewModifier {
+fileprivate struct System73DBorderModifier: ViewModifier {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     func body(content: Content) -> some View {
         content
@@ -29,9 +29,9 @@ struct System73DBorderModifier: ViewModifier {
     }
 }
 
-struct System7PNGShapedModifier: ViewModifier {
+fileprivate struct System7PNGShapedModifier: ViewModifier {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     let imageResource: ImageResource
     let imageWidth: CGFloat
@@ -68,7 +68,7 @@ struct System7PNGShapedModifier: ViewModifier {
     }
 }
 
-struct System7ModalBorderModifier: ViewModifier {
+fileprivate struct System7ModalBorderModifier: ViewModifier {
 
     @Environment(\.scaleFactor) var scaleFactor
 
@@ -86,7 +86,7 @@ struct System7ModalBorderModifier: ViewModifier {
     }
 }
 
-struct System7PlainBorderModifier: ViewModifier {
+fileprivate struct System7PlainBorderModifier: ViewModifier {
 
     @Environment(\.scaleFactor) var scaleFactor
 
@@ -98,30 +98,31 @@ struct System7PlainBorderModifier: ViewModifier {
 
 extension View {
 
-    func system7Border(width: CGFloat, edges: [Edge], color: Color) -> some View {
+    public func system7Border(width: CGFloat, edges: [Edge], color: Color) -> some View {
         modifier(BorderModifier(width: width, edges: edges, color: color))
     }
 
-    func system73DBorder() -> some View {
+    public func system73DBorder() -> some View {
         modifier(System73DBorderModifier())
 
     }
 
-    func system7PNGShapedBorder(image: ImageResource, imageWidth: CGFloat, imageHeight: CGFloat, width: CGFloat, color: Color, isActive: Bool) -> some View {
+    public func system7PNGShapedBorder(image: ImageResource, imageWidth: CGFloat, imageHeight: CGFloat, width: CGFloat, color: Color, isActive: Bool) -> some View {
         modifier(System7PNGShapedModifier(imageResource: image, imageWidth: imageWidth, imageHeight: imageHeight, width: width, color: color, isActive: isActive))
     }
 
-    func system7ModalBorder() -> some View {
+    public func system7ModalBorder() -> some View {
         modifier(System7ModalBorderModifier())
     }
 
-    func system7PlainBorder(color: Color = Color(.foreground)) -> some View {
+    //default Color(.foreground)
+    public func system7PlainBorder(color: Color) -> some View {
         modifier(System7PlainBorderModifier())
     }
 }
 
 
-private struct EdgeBorder: Shape {
+fileprivate struct EdgeBorder: Shape {
     var width: CGFloat
     var edges: [Edge]
 

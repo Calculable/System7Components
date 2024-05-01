@@ -1,22 +1,27 @@
 import SwiftUI
 
-struct System7WindowAnimationBorder: View {
+public struct System7WindowAnimationBorder: View {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
-    let isOpenAnimation: Bool
-    let originX: CGFloat
-    let originY: CGFloat
+    private let isOpenAnimation: Bool
+    private let originX: CGFloat
+    private let originY: CGFloat
+    private let onCompletion: (() -> ())?
 
-    @State var currentPositionX = 0.0
-    @State var currentPositionY = 0.0
-    @State var currentWidth = 0.0
-    @State var currentHeight = 0.0
+    @State private var currentPositionX = 0.0
+    @State private var currentPositionY = 0.0
+    @State private var currentWidth = 0.0
+    @State private var currentHeight = 0.0
 
+    public init(isOpenAnimation: Bool, originX: CGFloat, originY: CGFloat, onCompletion: (() -> Void)?) {
+        self.isOpenAnimation = isOpenAnimation
+        self.originX = originX
+        self.originY = originY
+        self.onCompletion = onCompletion
+    }
 
-    let onCompletion: (() -> ())?
-
-    var body: some View {
+    public var body: some View {
         GeometryReader { geo in
             Rectangle()
                 .strokeBorder(style: StrokeStyle(lineWidth: 1*scaleFactor, dash: [1*scaleFactor]))

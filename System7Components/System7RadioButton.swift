@@ -1,16 +1,21 @@
 import SwiftUI
 
-struct System7RadioButtons<Item: CustomStringConvertible & Equatable & Hashable>: View {
-    
-    @Environment(\.scaleFactor) var scaleFactor
+public struct System7RadioButtons<Item: CustomStringConvertible & Equatable & Hashable>: View {
 
+    @Environment(\.scaleFactor) private var scaleFactor
 
-    let items: [Item]
-    let layout: System7RadioLayout
+    private let items: [Item]
+    private let layout: System7RadioLayout
 
-    @Binding var selectedItem: Item
-    
-    var body: some View {
+    @Binding private var selectedItem: Item
+
+    public init(items: [Item], layout: System7RadioLayout, selectedItem: Binding<Item>) {
+        self.items = items
+        self.layout = layout
+        self._selectedItem = selectedItem
+    }
+
+    public var body: some View {
         switch layout {
             case .vertical:
                 VStack(spacing: 8*scaleFactor) {
@@ -23,7 +28,7 @@ struct System7RadioButtons<Item: CustomStringConvertible & Equatable & Hashable>
         }
     }
     
-    var itemViews: some View {
+    private var itemViews: some View {
         ForEach(items, id: \.self) { item in
             System7RadioButton(isChecked: item == selectedItem, title: item.description) {
                 selectedItem = item
@@ -32,7 +37,7 @@ struct System7RadioButtons<Item: CustomStringConvertible & Equatable & Hashable>
     }
 }
 
-enum System7RadioLayout {
+public enum System7RadioLayout {
     case vertical
     case horizontal
 }

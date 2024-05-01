@@ -1,14 +1,14 @@
 import SwiftUI
 
-struct System7TextfieldStyle: TextFieldStyle {
-    func _body(configuration: TextField<Self._Label>) -> some View {
+public struct System7TextfieldStyle: TextFieldStyle {
+    public func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .shadow(radius: 0)
             .system7PlainBorder(color: Color(.background))
             .system7FontLarge()
             .system7ScalablePadding(4)
             .background(Color(.background))
-            .system7PlainBorder()
+            .system7PlainBorder(color: .foreground)
     }
 }
 

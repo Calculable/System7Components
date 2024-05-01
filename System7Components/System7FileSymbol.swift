@@ -2,18 +2,18 @@ import Foundation
 import SwiftUI
 import Flow
 
-struct System7FileSymbol: View {
-    let fileType: System7FileType
-    let isSelected: Bool
-    let isOpen: Bool
-    
-    init(fileType: System7FileType, isSelected: Bool = false, isOpen: Bool = false) {
+public struct System7FileSymbol: View {
+    private let fileType: System7FileType
+    private let isSelected: Bool
+    private let isOpen: Bool
+
+    public init(fileType: System7FileType, isSelected: Bool = false, isOpen: Bool = false) {
         self.fileType = fileType
         self.isSelected = isSelected
         self.isOpen = isOpen
     }
     
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 0) {
             if let icon = fileType.icon {
                 System7ScaleableImage(resource: icon, width: fileType.width, height: fileType.height)
@@ -53,7 +53,7 @@ struct System7FileSymbol: View {
 }
 
 
-enum System7FileType {
+public enum System7FileType {
     case custom(customImage: ImageResource, customName: String, width: CGFloat, height: CGFloat)
     case appleMenuItems
     case controlPanels
@@ -72,7 +72,7 @@ enum System7FileType {
     case system
     case trashcan
     
-    var name: String? {
+    public var name: String? {
         switch self {
             case .custom(_, let customName, _, _):
                 customName

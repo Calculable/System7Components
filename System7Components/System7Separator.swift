@@ -3,7 +3,7 @@ import SwiftUI
 
 public struct System7Divider: View {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     public init() {
     }
@@ -15,7 +15,7 @@ public struct System7Divider: View {
     }
 }
 
-struct Line: Shape {
+private struct Line: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
         path.move(to: CGPoint(x: 0, y: 0))

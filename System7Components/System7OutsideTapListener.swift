@@ -1,13 +1,20 @@
 import SwiftUI
 
-struct System7OutsideTapListener<Content: View>: View {
-    let isActive: Bool
-    let dimmColor: Color
-    
-    @ViewBuilder let content: () -> Content
-    let onOutsideTap: () -> ()
-    
-    var body: some View {
+public struct System7OutsideTapListener<Content: View>: View {
+    private let isActive: Bool
+    private let dimmColor: Color
+
+    @ViewBuilder private let content: () -> Content
+    private let onOutsideTap: () -> ()
+
+    public init(isActive: Bool, dimmColor: Color, content: @escaping () -> Content, onOutsideTap: @escaping () -> Void) {
+        self.isActive = isActive
+        self.dimmColor = dimmColor
+        self.content = content
+        self.onOutsideTap = onOutsideTap
+    }
+
+    public var body: some View {
         ZStack {
             if isActive {
                 dimmColor

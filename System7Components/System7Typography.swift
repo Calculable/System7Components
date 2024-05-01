@@ -2,16 +2,16 @@ import SwiftUI
 
 extension View {
 
-    func system7FontDisplay() -> some View {
+    public func system7FontDisplay() -> some View {
         modifier(System7DisplayFont())
     }
     
-    func system7FontLarge() -> some View {
+    public func system7FontLarge() -> some View {
         self
             .modifier(System7LargeFont())
     }
     
-    func system7FontSmall() -> some View {
+    public func system7FontSmall() -> some View {
         modifier(System7SmallFont())
     }
 }

@@ -1,10 +1,13 @@
 import SwiftUI
 
-struct System7PrimaryButtonStyle: ButtonStyle {
+public struct System7PrimaryButtonStyle: ButtonStyle {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
-    func makeBody(configuration: Configuration) -> some View {
+    public init() {
+    }
+
+    public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .system7FontLarge()
             .foregroundStyle(configuration.isPressed ? Color(.background) : Color(.foreground))

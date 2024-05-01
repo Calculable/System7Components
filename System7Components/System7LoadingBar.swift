@@ -1,11 +1,10 @@
 import SwiftUI
 
-struct System7ProgressViewStyle: ProgressViewStyle {
+public struct System7ProgressViewStyle: ProgressViewStyle {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
-
-    func makeBody(configuration: Configuration) -> some View {
+    public func makeBody(configuration: Configuration) -> some View {
         
         let fractionCompleted = configuration.fractionCompleted ?? 0
         
@@ -18,7 +17,7 @@ struct System7ProgressViewStyle: ProgressViewStyle {
             }
         }
         .system7ScalableFrame(height: 9)
-        .system7PlainBorder()
+        .system7PlainBorder(color: .foreground)
         .system7ScalableFrame(idealWidth: 159)
     }
 }

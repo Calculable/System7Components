@@ -1,8 +1,8 @@
 import SwiftUI
 
-struct System7ScalableFrameModifier: ViewModifier {
+fileprivate struct System7ScalableFrameModifier: ViewModifier {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     let minWidth: CGFloat?
     let idealWidth: CGFloat?
@@ -36,9 +36,9 @@ struct System7ScalableFrameModifier: ViewModifier {
     }
 }
 
-struct System7ScalableAbsoluteFrameModifier: ViewModifier {
+fileprivate struct System7ScalableAbsoluteFrameModifier: ViewModifier {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     let width: CGFloat?
     let height: CGFloat?
@@ -60,9 +60,9 @@ struct System7ScalableAbsoluteFrameModifier: ViewModifier {
     }
 }
 
-struct System7ScalablePaddingEdgeInsetModifier: ViewModifier {
+fileprivate struct System7ScalablePaddingEdgeInsetModifier: ViewModifier {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     let edgeInsets: EdgeInsets
 
@@ -74,9 +74,9 @@ struct System7ScalablePaddingEdgeInsetModifier: ViewModifier {
     }
 }
 
-struct System7ScalablePaddingModifier: ViewModifier {
+fileprivate struct System7ScalablePaddingModifier: ViewModifier {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     let edges: Edge.Set
     let length: CGFloat?
@@ -95,23 +95,23 @@ struct System7ScalablePaddingModifier: ViewModifier {
 
 
 extension View {
-    func system7ScalableFrame(minWidth: CGFloat? = nil, idealWidth: CGFloat? = nil, maxWidth: CGFloat? = nil, minHeight: CGFloat? = nil, idealHeight: CGFloat? = nil, maxHeight: CGFloat? = nil, alignment: Alignment? = nil) -> some View {
+    public func system7ScalableFrame(minWidth: CGFloat? = nil, idealWidth: CGFloat? = nil, maxWidth: CGFloat? = nil, minHeight: CGFloat? = nil, idealHeight: CGFloat? = nil, maxHeight: CGFloat? = nil, alignment: Alignment? = nil) -> some View {
         modifier(System7ScalableFrameModifier(minWidth: minWidth, idealWidth: idealWidth, maxWidth: maxWidth, minHeight: minHeight, idealHeight: idealHeight, maxHeight: maxHeight, alignment: alignment))
     }
 
-    func system7ScalableFrame(width: CGFloat? = nil, height: CGFloat? = nil, alignment: Alignment? = nil) -> some View {
+    public func system7ScalableFrame(width: CGFloat? = nil, height: CGFloat? = nil, alignment: Alignment? = nil) -> some View {
         modifier(System7ScalableAbsoluteFrameModifier(width: width, height: height, alignment: alignment))
     }
 
-    func system7ScalablePadding(_ length: CGFloat? = nil) -> some View {
+    public func system7ScalablePadding(_ length: CGFloat? = nil) -> some View {
         modifier(System7ScalablePaddingModifier(edges: .all, length: length))
     }
 
-    func system7ScalablePadding(_ edges: Edge.Set = .all, _ length: CGFloat? = nil) -> some View {
+    public func system7ScalablePadding(_ edges: Edge.Set = .all, _ length: CGFloat? = nil) -> some View {
         modifier(System7ScalablePaddingModifier(edges: edges, length: length))
     }
 
-    func system7ScalablePadding(_ edgeInsets: EdgeInsets) -> some View {
+    public func system7ScalablePadding(_ edgeInsets: EdgeInsets) -> some View {
         modifier(System7ScalablePaddingEdgeInsetModifier(edgeInsets: edgeInsets))
     }
 }

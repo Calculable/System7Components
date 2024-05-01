@@ -1,12 +1,18 @@
 import SwiftUI
 
-struct System7StatusBar: View {
+public struct System7StatusBar: View {
     
-    let leadingText: String?
-    let centerText: String?
-    let trailingText: String?
-    
-    var body: some View {
+    private let leadingText: String?
+    private let centerText: String?
+    private let trailingText: String?
+
+    public init(leadingText: String? = nil, centerText: String? = nil, trailingText: String? = nil) {
+        self.leadingText = leadingText
+        self.centerText = centerText
+        self.trailingText = trailingText
+    }
+
+    public var body: some View {
         VStack(spacing: 1) {
             HStack {
                 if let leadingText {
@@ -32,7 +38,7 @@ struct System7StatusBar: View {
             
             Color(.background)
                 .system7ScalableFrame(height: 3)
-                .system7PlainBorder()
+                .system7PlainBorder(color: .foreground)
         }
     }
 }

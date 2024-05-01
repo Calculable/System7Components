@@ -1,12 +1,18 @@
 import SwiftUI
 
 /// A view that wrapps it's content into (non-functional) scrollbars
-struct System7ScrollView<Content: View>: View {
-    var isFocused: Bool
-    var isEnabled: Bool
-    @ViewBuilder let content: () -> Content
-    
-    var body: some View {
+public struct System7ScrollView<Content: View>: View {
+    private var isFocused: Bool
+    private var isEnabled: Bool
+    @ViewBuilder private let content: () -> Content
+
+    init(isFocused: Bool, isEnabled: Bool, content: @escaping () -> Content) {
+        self.isFocused = isFocused
+        self.isEnabled = isEnabled
+        self.content = content
+    }
+
+    public var body: some View {
         HStack(alignment: .top, spacing: 0) {
             VStack(spacing: 0) {
                 content()

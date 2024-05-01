@@ -6,7 +6,7 @@ private struct ScaleFactorKey: EnvironmentKey {
 }
 
 extension EnvironmentValues {
-    var scaleFactor: CGFloat {
+    public var scaleFactor: CGFloat {
         get { self[ScaleFactorKey.self] }
         set { self[ScaleFactorKey.self] = newValue }
     }

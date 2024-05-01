@@ -1,11 +1,16 @@
 import SwiftUI
 
-struct System7Checkbox: View {
-    
-    let title: String
-    @Binding var isChecked: Bool
-    
-    var body: some View {
+public struct System7Checkbox: View {
+
+    private let title: String
+    @Binding private var isChecked: Bool
+
+    public init(title: String, isChecked: Binding<Bool>) {
+        self.title = title
+        self._isChecked = isChecked
+    }
+
+    public var body: some View {
         Button(title) {
             isChecked.toggle()
         }
@@ -15,7 +20,7 @@ struct System7Checkbox: View {
 
 private struct System7CheckboxButtonStyle: ButtonStyle {
     
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
     let isChecked: Bool
     

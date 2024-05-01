@@ -1,16 +1,23 @@
 import SwiftUI
 
-struct System7DropDownPicker: View {
-    
-    let fallbackTitle: String
-    let isAnimated: Bool
-    @Binding var selection: String?
-    let options: [String]
-    
+public struct System7DropDownPicker: View {
+
+    private let fallbackTitle: String
+    private let isAnimated: Bool
+    @Binding private var selection: String?
+    private let options: [String]
+
     @State private var showDropdown = false
     @State private var buttonSize: CGSize?
-    
-    var body: some View {
+
+    public init(fallbackTitle: String, isAnimated: Bool, selection: Binding<String?>, options: [String]) {
+        self.fallbackTitle = fallbackTitle
+        self.isAnimated = isAnimated
+        self._selection = selection
+        self.options = options
+    }
+
+    public var body: some View {
         System7OutsideTapListener(isActive: showDropdown, dimmColor: Color.clear, content: {
             VStack(spacing: 0) {
                 System7DropDownItem(text: selection ?? fallbackTitle, image: showDropdown ? nil : Image(.Picker.pickerChevronDown)) {

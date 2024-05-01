@@ -1,14 +1,19 @@
 import Foundation
 import SwiftUI
 
-struct System7LabeledContent<Content: View>: View {
-    
-    @Environment(\.scaleFactor) var scaleFactor
+public struct System7LabeledContent<Content: View>: View {
 
-    let title: String
-    @ViewBuilder let content: () -> Content
-    
-    var body: some View {
+    @Environment(\.scaleFactor) private var scaleFactor
+
+    private let title: String
+    @ViewBuilder private let content: () -> Content
+
+    init(title: String, content: @escaping () -> Content) {
+        self.title = title
+        self.content = content
+    }
+
+    public var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
                 .system7FontSmall()

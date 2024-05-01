@@ -1,14 +1,20 @@
 import Foundation
 import SwiftUI
 
-struct System7AlertWithButtons: View {
-    let title: String
-    let symbol: System7AlertSymbol
-    let buttonConfigurations: [System7AlertButtonConfiguration]
-    
+public struct System7AlertWithButtons: View {
+    private let title: String
+    private let symbol: System7AlertSymbol
+    private let buttonConfigurations: [System7AlertButtonConfiguration]
+
     @State private var buttonMaxWidth: CGFloat?
-    
-    var body: some View {
+
+    public init(title: String, symbol: System7AlertSymbol, buttonConfigurations: [System7AlertButtonConfiguration]) {
+        self.title = title
+        self.symbol = symbol
+        self.buttonConfigurations = buttonConfigurations
+    }
+
+    public var body: some View {
         System7Alert(text: title, symbol: symbol) {
             ForEach(buttonConfigurations) { buttonConfiguration in
                 Button(action: {}, label: {
@@ -34,14 +40,14 @@ struct System7AlertWithButtons: View {
     }
 }
 
-struct System7AlertButtonConfiguration: Identifiable {
-    let id = UUID()
-    let title: String
-    let isPrimary: Bool
-    let action: () -> ()
+public struct System7AlertButtonConfiguration: Identifiable {
+    public let id = UUID()
+    public let title: String
+    public let isPrimary: Bool
+    public let action: () -> ()
 }
 
-enum System7AlertSymbol {
+public enum System7AlertSymbol {
     case none
     case stop
     case warningBlackAndWhite
@@ -49,7 +55,7 @@ enum System7AlertSymbol {
 }
 
 
-struct ButtonWidthPreferenceKey: PreferenceKey {
+private struct ButtonWidthPreferenceKey: PreferenceKey {
     static let defaultValue: CGFloat = 0
     
     static func reduce(value: inout CGFloat,
@@ -102,7 +108,7 @@ private struct System7Alert<T: View>: View {
     }
 }
 
-struct System7AlertFrame<Content: View>: View {
+private struct System7AlertFrame<Content: View>: View {
     @ViewBuilder let content: () -> Content
     
     var body: some View {

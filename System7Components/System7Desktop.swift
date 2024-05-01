@@ -2,11 +2,11 @@ import Foundation
 import SwiftUI
 import Flow
 
-struct System7Background: View {
+public struct System7Background: View {
 
-    @Environment(\.scaleFactor) var scaleFactor
+    @Environment(\.scaleFactor) private var scaleFactor
 
-    enum System7BackgroundImage: String, CaseIterable {
+    public enum System7BackgroundImage: String, CaseIterable {
         case defaultBackground = "defaultBackground"
         case background10042 = "10042"
         case background1111 = "1111"
@@ -84,9 +84,13 @@ struct System7Background: View {
         case background987 = "987"
     }
     
-    let background: System7BackgroundImage
-    
-    var body: some View {
+    public let background: System7BackgroundImage
+
+    public init(background: System7BackgroundImage) {
+        self.background = background
+    }
+
+    public var body: some View {
         Image(background.rawValue)
             .interpolation(.none)
             .resizable(resizingMode: .tile)
