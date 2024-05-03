@@ -136,6 +136,8 @@
 		3D0252AF2BE17EE9004D82CE = {
 			isa = PBXGroup;
 			children = (
+				3D5D89F52BE5560A0032B65C /* README.md */,
+				3D5D8A0D2BE556270032B65C /* readme_assets */,
 				3D0252BB2BE17EE9004D82CE /* System7Components */,
 				3D0252BA2BE17EE9004D82CE /* Products */,
 			);
@@ -152,8 +154,6 @@
 		3D0252BB2BE17EE9004D82CE /* System7Components */ = {
 			isa = PBXGroup;
 			children = (
-				3D5D89F52BE5560A0032B65C /* README.md */,
-				3D5D8A0D2BE556270032B65C /* readme_assets */,
 				3D0253022BE180A3004D82CE /* Assets.xcassets */,
 				3D0252FE2BE17F82004D82CE /* Info.plist */,
 				3D0252FA2BE17F49004D82CE /* EBGaramond-Regular.ttf */,
