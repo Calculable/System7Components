@@ -42,6 +42,7 @@ public struct System7LabeledContent<Content: View>: View {
         }
     }
     .system7ScalablePadding()
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
 
 }

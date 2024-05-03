@@ -179,7 +179,7 @@ public struct System7Background: View {
 }
 
 #Preview {
-    System7Background(background: .background31689)
+    System7Background(background: .background142)
         .environment(\.scaleFactor, 2)
 
 }

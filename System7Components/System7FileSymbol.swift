@@ -232,15 +232,15 @@ public enum System7FileType {
 #Preview {
     HStack {
         System7FileSymbol(fileType: .appleMenuItems)
-        System7FileSymbol(fileType: .folder(customName: "MyFolder"))
-        System7FileSymbol(fileType: .folder(customName: "Selected"), isSelected: true)
-        System7FileSymbol(fileType: .folder(customName: "Open"), isOpen: true)
-        System7FileSymbol(fileType: .folder(customName: "Selected and Open"), isSelected: true, isOpen: true)
-        System7FileSymbol(fileType: .folder(customName: "MyFolder"))
-        System7FileSymbol(fileType: .file(customName: "MyFile"))
-        System7FileSymbol(fileType: .custom(customImage: ._16974, customName: "MyFile", width: 30, height: 30))
+        System7FileSymbol(fileType: .folder(customName: "Folder"))
+        System7FileSymbol(fileType: .folder(customName: "Selected Folder"), isSelected: true)
+        System7FileSymbol(fileType: .folder(customName: "Open Folder"), isOpen: true)
+        System7FileSymbol(fileType: .folder(customName: "Selected and Open Folder"), isSelected: true, isOpen: true)
+        System7FileSymbol(fileType: .file(customName: "File"))
+        System7FileSymbol(fileType: .custom(customImage: ._16974, customName: "Custom Symbol", width: 30, height: 30))
     }
     .system7ScalablePadding()
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
 
 }

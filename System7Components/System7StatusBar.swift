@@ -54,13 +54,17 @@ private struct System7StatusBarText: View {
 
 #Preview("Status Bar") {
     System7StatusBar(leadingText: "9 items", centerText: "813.2 MB in disk", trailingText: "60.3 MB available")
+        .loadCustomFonts()
         .environment(\.scaleFactor, 2)
+        .system7ScalablePadding()
 
 }
 
 #Preview("Status Bar (Only Center)") {
     System7StatusBar(leadingText: nil, centerText: "813.2 MB in disk", trailingText: nil)
+        .loadCustomFonts()
         .environment(\.scaleFactor, 2)
+        .system7ScalablePadding()
 
 }
 

@@ -4,7 +4,6 @@ public struct System7TextfieldStyle: TextFieldStyle {
     public func _body(configuration: TextField<Self._Label>) -> some View {
         configuration
             .shadow(radius: 0)
-            .system7PlainBorder(color: Color(.background))
             .system7FontLarge()
             .system7ScalablePadding(4)
             .background(Color(.background))
@@ -24,16 +23,19 @@ extension NSTextField {
 #Preview {
     struct System7TextfieldExample: View {
         
-        @State var test: String = "Hello World"
-        
+        @State var text: String = "Hello World"
+
         var body: some View {
             
-            TextField("My Textfield", text: $test)
+            TextField("My Textfield", text: $text)
                 .textFieldStyle(System7TextfieldStyle())
         }
     }
     
     return System7TextfieldExample()
+        .loadCustomFonts()
+        .system7ScalablePadding()
         .environment(\.scaleFactor, 2)
+
 
 }

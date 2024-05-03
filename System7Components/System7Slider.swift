@@ -100,6 +100,7 @@ public struct System7Slider: View {
     
     return System7SliderExample()
         .system7ScalablePadding()
+        .loadCustomFonts()
         .environment(\.scaleFactor, 2)
 
 }

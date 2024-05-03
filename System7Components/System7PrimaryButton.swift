@@ -40,6 +40,7 @@ public struct System7PrimaryButtonStyle: ButtonStyle {
     }
     .buttonStyle(System7PrimaryButtonStyle())
     .system7ScalablePadding()
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
 
 }

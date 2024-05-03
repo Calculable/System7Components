@@ -31,6 +31,7 @@ public struct System73DButtonStyle: ButtonStyle {
     }
     .buttonStyle(System73DButtonStyle(isSymbolButton: false))
     .system7ScalablePadding()
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
 
 }
@@ -41,9 +42,11 @@ public struct System73DButtonStyle: ButtonStyle {
     } label: {
         Label("Demo", systemImage: "star.fill")
             .labelStyle(.iconOnly)
+            .system7ScalablePadding()
     }
     .buttonStyle(System73DButtonStyle(isSymbolButton: true))
     .system7ScalablePadding()
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
 
 }

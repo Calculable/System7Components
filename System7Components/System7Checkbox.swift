@@ -52,6 +52,7 @@ private struct System7CheckboxButtonStyle: ButtonStyle {
     
     return System7CheckboxExample()
         .system7ScalablePadding()
+        .loadCustomFonts()
         .environment(\.scaleFactor, 2)
 
 }

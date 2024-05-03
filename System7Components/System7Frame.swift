@@ -181,6 +181,18 @@ private struct System7MaximiseButton: View {
     }
     .system7ScalableFrame(height: 200)
     .system7ScalablePadding()
+    .loadCustomFonts()
+    .environment(\.scaleFactor, 2)
+
+}
+
+#Preview("Long Text"){
+    System7Frame(title: "a long text", isFocused: true, scrollbarBehavior: .disabled) {
+        Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.")
+    }
+    .system7ScalableFrame(height: 200)
+    .system7ScalablePadding()
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
 
 }
@@ -190,6 +202,7 @@ private struct System7MaximiseButton: View {
         Text("1\n2\n3\n4")
     }
     .system7ScalablePadding()
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
 
 }
@@ -197,6 +210,7 @@ private struct System7MaximiseButton: View {
 #Preview("Header") {
     System7FrameHeader(title: "Example Header", isFocused: false)
         .system7ScalablePadding()
+        .loadCustomFonts()
         .environment(\.scaleFactor, 2)
 
 }

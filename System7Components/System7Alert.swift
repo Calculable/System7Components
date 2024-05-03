@@ -146,7 +146,6 @@ extension View {
 #Preview {
     VStack {
         System7AlertWithButtons(title: "The disk could not be erased, because you cannot erase a shared disk", symbol: .stop, buttonConfigurations: [
-            
             System7AlertButtonConfiguration(title: "Cancel", isPrimary: false, action: {
                 print("Cancel called")
             }),
@@ -159,6 +158,7 @@ extension View {
         
         Button("Views outside can not be clicked") {}
     }
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
 
 

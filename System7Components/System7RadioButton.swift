@@ -109,6 +109,7 @@ private struct System7RadioButtonStyle: ButtonStyle {
     
     return System7HorizontalRadioButtonsExample()
         .system7ScalablePadding()
+        .loadCustomFonts()
         .environment(\.scaleFactor, 2)
 
 }

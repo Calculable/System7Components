@@ -14,6 +14,14 @@ extension View {
     public func system7FontSmall() -> some View {
         modifier(System7SmallFont())
     }
+
+    public func loadCustomFonts() -> some View {
+        for font in ["EBGaramond-Regular.ttf", "TitilliumWeb-Bold.ttf"] {
+            guard let url = Bundle(identifier: "ch.janhuber.System7Components")!.url(forResource: font, withExtension: nil) else { return self }
+                    CTFontManagerRegisterFontsForURL(url as CFURL, .process, nil)
+                }
+        return self
+    }
 }
 
 fileprivate struct System7DisplayFont: ViewModifier {
@@ -51,23 +59,31 @@ fileprivate struct System7SmallFont: ViewModifier {
 
 #Preview("Display Font") {
     Text("Display")
+        .loadCustomFonts()
         .system7FontDisplay()
         .system7ScalablePadding()
+        .environment(\.scaleFactor, 2)
+
 }
 
 #Preview("Large Font") {
 
     VStack {
         Text("Large")
+            .loadCustomFonts()
             .system7FontLarge()
-            .background(.red)
             .system7ScalablePadding()
+            .environment(\.scaleFactor, 2)
+
     }
 
 }
 
 #Preview("Small Font") {
     Text("Small")
+        .loadCustomFonts()
         .system7FontSmall()
         .system7ScalablePadding()
+        .environment(\.scaleFactor, 2)
+
 }

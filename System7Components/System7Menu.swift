@@ -264,6 +264,7 @@ private struct System7Time: View {
         })
         Color.gray
     }
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
     .padding()
 

@@ -194,6 +194,7 @@ private struct System7OptionsView: View {
     
     return System7PickerExample()
         .system7ScalablePadding(100)
+        .loadCustomFonts()
         .environment(\.scaleFactor, 2)
 
 }

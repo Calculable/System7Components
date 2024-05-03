@@ -195,6 +195,7 @@ private struct System7ScrollButtonStyle: ButtonStyle {
             .system7FontDisplay()
 
     }
+    .loadCustomFonts()
     .environment(\.scaleFactor, 2)
     .system7ScalablePadding()
 
