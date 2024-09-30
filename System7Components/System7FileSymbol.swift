@@ -56,6 +56,7 @@ public struct System7FileSymbol: View {
 public enum System7FileType {
     case custom(customImage: ImageResource, customName: String, width: CGFloat, height: CGFloat)
     case appleMenuItems
+    case calculator
     case controlPanels
     case emptySpace
     case extensions
@@ -78,6 +79,8 @@ public enum System7FileType {
                 customName
             case .appleMenuItems:
                 "Apple Menu Items"
+            case .calculator:
+                "Calculator"
             case .controlPanels:
                 "Control Panels"
             case .emptySpace:
@@ -117,6 +120,8 @@ public enum System7FileType {
             customImage
         case .appleMenuItems:
            .Icons.appleMenuItems
+        case .calculator:
+            .Icons.calculator
         case .controlPanels:
             .Icons.controlPanels
         case .emptySpace:
@@ -156,6 +161,8 @@ public enum System7FileType {
                 width
             case .appleMenuItems:
                 31
+            case .calculator:
+                22
             case .controlPanels:
                 31
             case .emptySpace:
@@ -195,6 +202,8 @@ public enum System7FileType {
                 height
             case .appleMenuItems:
                 25
+            case .calculator:
+                32
             case .controlPanels:
                 25
             case .emptySpace:

@@ -2,10 +2,10 @@ import SwiftUI
 
 extension View {
 
-    public func system7FontDisplay() -> some View {
-        modifier(System7DisplayFont())
+    public func system7FontDisplay(fontSize: CGFloat = 72) -> some View {
+        modifier(System7DisplayFont(fontSize: fontSize))
     }
-    
+
     public func system7FontLarge() -> some View {
         self
             .modifier(System7LargeFont())
@@ -27,10 +27,11 @@ extension View {
 fileprivate struct System7DisplayFont: ViewModifier {
 
     @Environment(\.scaleFactor) var scaleFactor
+    let fontSize: CGFloat
 
     func body(content: Content) -> some View {
         content
-            .font(.custom("EBGaramond-Regular", size: 72*scaleFactor, relativeTo: .largeTitle))
+            .font(.custom("EBGaramond-Regular", size: fontSize*scaleFactor, relativeTo: .largeTitle))
     }
 }
 

@@ -93,25 +93,27 @@ public struct System7Filesystem: View {
         ForEach(files) { file in
             System7FileSymbol(fileType: file.symbol, isSelected: file.isSelected, isOpen: file.isOpen)
 
-                .onTapGesture(count: 2) {
-                    deselectAllFiles()
-                    file.isSelected = true
-                    file.isOpen = true
-
-                    guard let anchor = filePositions[file.id] else {
-                        assertionFailure("File Position not found")
-                        return
-                    }
-
-                    onOpen(file, anchor)
-                }
-                .simultaneousGesture(
+                .highPriorityGesture(
                     TapGesture()
                         .onEnded { _ in
                             deselectAllFiles()
                             file.isSelected = true
                         }
                 )
+                .simultaneousGesture(TapGesture(count: 2)
+                    .onEnded({ _ in
+                        deselectAllFiles()
+                        file.isSelected = true
+
+                        guard let anchor = filePositions[file.id] else {
+                            assertionFailure("File Position not found")
+                            return
+                        }
+
+                        onOpen(file, anchor)
+                    }))
+              
+
                 .background(GeometryReader { buttonGeometry in
                     Color.clear
                     // Step 2: Capture the layout of each button

@@ -61,6 +61,7 @@
 		3D5D8A212BE556270032B65C /* Bildschirmfoto 2024-05-03 um 18.59.02.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D5D8A0A2BE556270032B65C /* Bildschirmfoto 2024-05-03 um 18.59.02.png */; };
 		3D5D8A222BE556270032B65C /* Bildschirmfoto 2024-05-03 um 18.59.43.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D5D8A0B2BE556270032B65C /* Bildschirmfoto 2024-05-03 um 18.59.43.png */; };
 		3D5D8A232BE556270032B65C /* Bildschirmfoto 2024-05-03 um 19.00.25.png in Resources */ = {isa = PBXBuildFile; fileRef = 3D5D8A0C2BE556270032B65C /* Bildschirmfoto 2024-05-03 um 19.00.25.png */; };
+		3D8359012CA733BA00413869 /* PublicColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8359002CA733BA00413869 /* PublicColors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		3D5D8A0A2BE556270032B65C /* Bildschirmfoto 2024-05-03 um 18.59.02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bildschirmfoto 2024-05-03 um 18.59.02.png"; sourceTree = "<group>"; };
 		3D5D8A0B2BE556270032B65C /* Bildschirmfoto 2024-05-03 um 18.59.43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bildschirmfoto 2024-05-03 um 18.59.43.png"; sourceTree = "<group>"; };
 		3D5D8A0C2BE556270032B65C /* Bildschirmfoto 2024-05-03 um 19.00.25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bildschirmfoto 2024-05-03 um 19.00.25.png"; sourceTree = "<group>"; };
+		3D8359002CA733BA00413869 /* PublicColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicColors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				3D0252CC2BE17F13004D82CE /* System73DButton.swift */,
 				3D0252DA2BE17F14004D82CE /* View+Helper.swift */,
 				3D0252BC2BE17EE9004D82CE /* System7Components.h */,
+				3D8359002CA733BA00413869 /* PublicColors.swift */,
 			);
 			path = System7Components;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				3D0252DE2BE17F14004D82CE /* System7OutsideTapListener.swift in Sources */,
 				3D0252EA2BE17F14004D82CE /* System7WindowAnimationBorder.swift in Sources */,
 				3D0252DF2BE17F14004D82CE /* System7StatusBar.swift in Sources */,
+				3D8359012CA733BA00413869 /* PublicColors.swift in Sources */,
 				3D0252F32BE17F14004D82CE /* View+Helper.swift in Sources */,
 				3D0252E52BE17F14004D82CE /* System73DButton.swift in Sources */,
 				3D0252E02BE17F14004D82CE /* System7Slider.swift in Sources */,

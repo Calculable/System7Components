@@ -4,6 +4,9 @@ public struct System7ProgressViewStyle: ProgressViewStyle {
 
     @Environment(\.scaleFactor) private var scaleFactor
 
+    public init() {
+    }
+
     public func makeBody(configuration: Configuration) -> some View {
         
         let fractionCompleted = configuration.fractionCompleted ?? 0
