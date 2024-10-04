@@ -7,13 +7,17 @@ public struct System7Slider: View {
 
     @Binding public var value: Double
     public let range: ClosedRange<Double>
+    public let onDragEnded: (() -> Void)?
+
 
     @State private var previousKnobOffset = 0.0
     @State private var knobOffset = 0.0
+    @State private var isDragging = false // Track if the user is dragging the knob
 
-    init(value: Binding<Double>, range: ClosedRange<Double>) {
+    public init(value: Binding<Double>, range: ClosedRange<Double>, onDragEnded: (() -> Void)? = nil) {
         self._value = value
         self.range = range
+        self.onDragEnded = onDragEnded
     }
 
     private var knobWidth: CGFloat {
@@ -44,15 +48,28 @@ public struct System7Slider: View {
                     .gesture(
                         DragGesture(minimumDistance: 0)
                             .onChanged { gesture in
+                                isDragging = true // User started dragging
                                 knobOffset = min(max(knobPadding, previousKnobOffset + gesture.translation.width), (geo.size.width - knobPadding) - knobWidth)
+                                value = updateSliderValueBasedOnOffset(availableWidth: geo.size.width) // Update the value during drag
                             }
                             .onEnded { _ in
                                 previousKnobOffset = knobOffset
+                                value = updateSliderValueBasedOnOffset(availableWidth: geo.size.width) // Update the value during drag
+                                knobOffset = updateOffsetBasedOnSliderValue(availableWidth: geo.size.width)
+                                onDragEnded?()
+                                isDragging = false // User finished dragging
+
                             }
                     )
             }
             .onChange(of: knobOffset) {
                 value = updateSliderValueBasedOnOffset(availableWidth: geo.size.width)
+            }
+            .onChange(of: value) {
+                if !isDragging {
+                    knobOffset = updateOffsetBasedOnSliderValue(availableWidth: geo.size.width)
+                    previousKnobOffset = knobOffset
+                }
             }
             .onAppear(perform: {
                 knobOffset = updateOffsetBasedOnSliderValue(availableWidth: geo.size.width)
