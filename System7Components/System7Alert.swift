@@ -45,6 +45,12 @@ public struct System7AlertButtonConfiguration: Identifiable {
     public let title: String
     public let isPrimary: Bool
     public let action: () -> ()
+
+    public init(title: String, isPrimary: Bool, action: @escaping () -> Void) {
+        self.title = title
+        self.isPrimary = isPrimary
+        self.action = action
+    }
 }
 
 public enum System7AlertSymbol {
@@ -66,14 +72,20 @@ private struct ButtonWidthPreferenceKey: PreferenceKey {
     }
 }
 
-private struct System7Alert<T: View>: View {
-    
+public struct System7Alert<T: View>: View {
+
     let text: String
     let symbol: System7AlertSymbol
     
     @ViewBuilder let additionalView: () -> T
-    
-    var body: some View {
+
+    public init(text: String, symbol: System7AlertSymbol, additionalView: @escaping () -> T) {
+        self.text = text
+        self.symbol = symbol
+        self.additionalView = additionalView
+    }
+
+    public var body: some View {
         System7AlertFrame {
             VStack(alignment: .leading, spacing: 30) {
                 HStack(alignment: .top, spacing: 23) {
@@ -85,11 +97,10 @@ private struct System7Alert<T: View>: View {
                         .multilineTextAlignment(.leading)
                         .fixedSize(horizontal: false, vertical: true)
                 }
+
+                additionalView()
+
                 
-                HStack(spacing: 10) {
-                    Spacer()
-                    additionalView()
-                }
             }
         }
     }
