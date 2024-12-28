@@ -89,10 +89,12 @@ fileprivate struct System7ModalBorderModifier: ViewModifier {
 fileprivate struct System7PlainBorderModifier: ViewModifier {
 
     @Environment(\.scaleFactor) var scaleFactor
+    let color: Color
+    let width: CGFloat
 
     func body(content: Content) -> some View {
         content
-            .border(Color(.foreground), width: scaleFactor)
+            .border(color, width: width * scaleFactor)
     }
 }
 
@@ -115,9 +117,12 @@ extension View {
         modifier(System7ModalBorderModifier())
     }
 
-    //default Color(.foreground)
-    public func system7PlainBorder(color: Color) -> some View {
-        modifier(System7PlainBorderModifier())
+    public func system7PlainBorder(width: CGFloat = 1.0) -> some View {
+        modifier(System7PlainBorderModifier(color: Color.foreground, width: width))
+    }
+
+    public func system7PlainBorder(color: Color, width: CGFloat = 1.0) -> some View {
+        modifier(System7PlainBorderModifier(color: color, width: width))
     }
 }
 

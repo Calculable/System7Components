@@ -83,7 +83,7 @@ public struct System7Background: View {
         case background9695 = "9695"
         case background987 = "987"
 
-        var imageResource: ImageResource {
+        public var imageResource: ImageResource {
             switch self {
                 case .defaultBackground: .defaultBackground
                 case .background10042: ._10042
