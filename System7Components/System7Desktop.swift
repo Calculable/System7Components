@@ -15,7 +15,6 @@ public struct System7Background: View {
         case background12593 = "12593"
         case background128 = "128"
         case background12821 = "12821"
-        case background129 = "129"
         case background130 = "130"
         case background13096 = "13096"
         case background131 = "131"
@@ -93,7 +92,6 @@ public struct System7Background: View {
                 case .background12593: ._12593
                 case .background128: ._128
                 case .background12821: ._12821
-                case .background129: ._129
                 case .background130: ._130
                 case .background13096: ._13096
                 case .background131: ._131
