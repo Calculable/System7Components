@@ -119,10 +119,14 @@ public struct System7Alert<T: View>: View {
     }
 }
 
-private struct System7AlertFrame<Content: View>: View {
-    @ViewBuilder let content: () -> Content
-    
-    var body: some View {
+public struct System7AlertFrame<Content: View>: View {
+    @ViewBuilder private let content: () -> Content
+
+    public init(content: @escaping () -> Content) {
+        self.content = content
+    }
+
+    public var body: some View {
         System7OutsideTapListener(isActive: true, dimmColor: Color(.gray100).opacity(0.4), content: {
             content()
                 .safeAreaPadding(EdgeInsets(top: 18, leading: 18, bottom: 16, trailing: 18))
