@@ -93,6 +93,7 @@ private struct System7Menu: View {
                     switch configuration.titleType {
                         case .image(let image, let width, let height):
                             System7ScaleableImage(resource: image, width: width, height: height)
+                                .tint(.foreground)
                                 .system7ScalablePadding(EdgeInsets(top: 2, leading: 5, bottom: 2, trailing: 5))
                         case .text(let title):
                             Text(title)

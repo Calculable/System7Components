@@ -28,7 +28,7 @@ public struct System7FileSymbol: View {
                         }
                     )
                     .system7PNGShapedBorder(image: icon, imageWidth: fileType.width, imageHeight: fileType.height, width: 1, color: Color(.foreground), isActive: isOpen)
-                    .brightness(isSelected ? (isOpen ? 0 : -0.5) : 0)
+                    .brightness(isSelected ? (isOpen ? 0 : -0.2) : 0)
                     .system7ScalablePadding(isOpen ? 0 : 1)
             } else {
                 ZStack {}
